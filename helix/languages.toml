@@ -1,0 +1,44 @@
+# Python: completion/type checking via Basedpyright; linting/formatting via Ruff.
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
+
+[language-server.basedpyright.config.basedpyright]
+disableOrganizeImports = true
+
+[language-server.basedpyright.config.basedpyright.analysis]
+typeCheckingMode = "standard"
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[[language]]
+name = "python"
+language-servers = ["basedpyright", { name = "ruff", except-features = ["hover"] }]
+auto-format = true
+formatter = { command = "ruff", args = ["format", "--stdin-filename", "%{buffer_name}", "-"] }
+
+# Rust: use the project's rustup toolchain and run Clippy on save.
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+auto-format = true
+
+# C/C++: clangd reads compilation flags from compile_commands.json.
+[language-server.clangd]
+command = "clangd"
+args = ["--background-index"]
+
+[[language]]
+name = "c"
+language-servers = ["clangd"]
+auto-format = true
+
+[[language]]
+name = "cpp"
+language-servers = ["clangd"]
+auto-format = true
