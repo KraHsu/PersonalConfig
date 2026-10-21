@@ -1,6 +1,6 @@
 # PersonalConfig
 
-个人配置仓库。每次明确选择一个软件；安装软件和应用配置分别执行，没有 `all` 操作。使用 POSIX sh，无需 Python，当前安装脚本主要面向 Linux。
+个人配置仓库，当前安装脚本主要面向 Linux。
 
 ```bash
 # 预览，然后单独应用 Helix 配置（不安装软件）
